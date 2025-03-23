@@ -1,38 +1,56 @@
-# All Important points during the project development
+# All Important Points During Project Development
 
-### To create an application used the below command
+### To create the application, use the following command:
 
-```npm create vite@latest BrightEvents --template react-ts```
+```sh
+npm create vite@latest BrightEvents --template react-ts
+```
 
-### Package name is:
+### Package name:
 
-```brightevents```
+```sh
+brightevents
+```
 
-### Framework is:
+### Framework:
 
-```React```
+```sh
+React
+```
 
-### Variant Selected is:
+### Variant Selected:
 
-```TypeScript```
+```sh
+TypeScript
+```
 
-### Project Scaffolded and execte the below commands:
+### Project Scaffolded and execute the following commands:
 
-```cd BrightEvents``` *Command to Redirect to project path*
+1. Redirect to project path:
+    ```sh
+    cd BrightEvents
+    ```
 
-```npm install``` *Command to install all dependencies of npm*
+2. Install all npm dependencies:
+    ```sh
+    npm install
+    ```
 
-```npm run dev```  *Command to run the application in developer mode*
+3. Run the application in developer mode:
+    ```sh
+    npm run dev
+    ```
 
 ### Command to install Material UI framework dependencies:
 
-```npm install @mui/material @emotion/react @emotion/styled @mui/icons-material @mui/system```
+```sh
+npm install @mui/material @emotion/react @emotion/styled @mui/icons-material @mui/system
+```
 
-<sub>After successful installation of Material UI dependencies we can run our application</sub>
+<sub>After successful installation of Material UI dependencies, you can run the application.</sub>
 
+### To run the application, use the following command:
 
-### To run the application use the below commad
-
-```npm run dev```
-
-
+```sh
+npm run dev
+```
