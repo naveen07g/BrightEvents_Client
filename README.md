@@ -28,7 +28,8 @@
 
 ```npm install @mui/material @emotion/react @emotion/styled @mui/icons-material @mui/system```
 
-After successful installation of Material UI dependencies we can run our application
+<sub>After successful installation of Material UI dependencies we can run our application</sub>
+
 
 ### To run the application use the below commad
 
