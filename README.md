@@ -54,3 +54,9 @@ npm install @mui/material @emotion/react @emotion/styled @mui/icons-material @mu
 ```sh
 npm run dev
 ```
+
+### ran the below command
+
+```sh
+npm install @toolpad/core
+```
