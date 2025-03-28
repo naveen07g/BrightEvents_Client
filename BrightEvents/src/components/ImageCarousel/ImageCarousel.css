@@ -1,0 +1,26 @@
+/* carousel.css */
+
+.slick-dots {
+    position: absolute;
+    top: 50%;
+    left: 0px;               /* stick to the very left */
+    transform: translateY(-50%);
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 25px;      /* optional spacing from edge */
+
+}
+
+/* Dot style */
+.slick-dots li button:before {
+    font-size: 14px;
+    color: #FF6F61;
+    opacity: 0.7;
+}
+
+/* Active dot */
+.slick-dots li.slick-active button:before {
+    color: #ffffff;
+    opacity: 1;
+}

@@ -1,20 +1,3 @@
-.header {
-    height: 8vw;
-    margin: 0 auto; /* Remove top margin */
-    position: fixed; /* Fix the header at the top */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    right: 0; /* Stretch to the right */
-    background-color: #fc7b7b;
-    z-index: 1000; /* Ensure it stays on top */
-    display: flex; /* Align children in a row */
-    border-radius: 10px;
-    
-}
-
-.headerLogo img {
-    cursor: pointer;
-    height: 70px;
-    float: left; /* Align the icon to the left */
-    margin: 10px; /* Add some margin for spacing */
+.align-toolbar{
+    padding-left: 100px !important;
 }

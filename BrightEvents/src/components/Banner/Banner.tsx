@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 // import background from '../../assets/background_img1.png'
 import './Banner.css'
 // import { useNavigate} from 'react-router-dom'

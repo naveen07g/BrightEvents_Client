@@ -1,11 +1,16 @@
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css'
-import Header from './components/Header/Header'
-import Home from '@mui/icons-material/Home';
-import Banner from './components/Banner/Banner';
+import { BrowserRouter, Routes } from 'react-router-dom';
+import './App.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import Header from './components/Header/Header';
+import ImageCarousel from './components/ImageCarousel/ImageCarousel';
+import Categories from './components/Categories/Categories';
+
+
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -13,10 +18,11 @@ function App() {
   return (      
       <BrowserRouter>
         <Header />
-        <Banner />
+        <ImageCarousel />
+        <Categories  />
+        {/* <Banner /> */}
         <Routes>
-          <Route path="/" element={<Home />} />
-
+          {/* <Route path="/" element={<Home />} /> */}
           {/* <Route path="/about" element={<About />} /> */}
         </Routes>
       </BrowserRouter>
