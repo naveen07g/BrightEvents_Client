@@ -2,6 +2,7 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
 import LoginModal from '../Login/Login';
 import './Header.css';
+import BusinessLogin from '../BusinessLogin/BusinessLogin';
 
 const pages = ['Venues', 'Vendors', 'Photos', 'Real Weddings', 'Blog', 'E-Invites'];
 
@@ -45,6 +46,8 @@ const Header = () => {
         {/* Spacer */}
         <Box sx={{ flexGrow: 1 }} />
         
+          <BusinessLogin/>
+
         {/* Right - Login Button */}
         <LoginModal />
       </Toolbar>

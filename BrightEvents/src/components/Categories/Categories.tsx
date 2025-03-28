@@ -32,7 +32,7 @@ const Categories = () => {
             </Box>
 
             {/* Right aligned text BELOW the grid */}
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', px: 35, mt: 3 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', px: 40, mt: 3 }}>
 
                 <Button
                     variant="text"
