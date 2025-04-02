@@ -5,16 +5,21 @@ import {
     Grid,
     Typography,
     Box,
+    Select,
+    MenuItem,
+    FormControl,
+    InputLabel,
 } from "@mui/material";
 
 const BusinessSignUp = () => {
     const [formData, setFormData] = useState({
-        ownerName: "",
-        businessName: "",
-        address: "",
-        mobileNumber: "",
-        email: "",
-        gstin: "",
+        ownerName: "Owner",
+        businessName: "Hello",
+        address: "Plano, Texas",
+        mobileNumber: "9876543210",
+        email: "hellonaveen@abc.com",
+        gstin: "123123456456789789",
+        businessCategory: "Catering",
     });
 
     const [errors, setErrors] = useState({
@@ -25,26 +30,28 @@ const BusinessSignUp = () => {
         email: "",
         gstin: "",
         logo: "",
+        businessCategory: "",
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }> | { target: { name: string; value: string } }) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file && file.size > 1024 * 1024) {
-            setErrors({ ...errors, logo: "File size must be less than 1MB" });
-        } else {
-            setFormData({ ...formData });
-            setErrors({ ...errors, logo: "" });
+        if (typeof name === "string") {
+            setFormData({ ...formData, [name]: value });
         }
     };
 
     const validate = () => {
         let isValid = true;
-        const newErrors: any = {};
+        const newErrors: typeof errors = {
+            ownerName: "",
+            businessName: "",
+            address: "",
+            mobileNumber: "",
+            email: "",
+            gstin: "",
+            logo: "",
+            businessCategory: "",
+        };
 
         if (!formData.ownerName) {
             newErrors.ownerName = "Owner Name is required";
@@ -70,15 +77,27 @@ const BusinessSignUp = () => {
             newErrors.gstin = "Valid GSTIN (15 characters) is required";
             isValid = false;
         }
+        if (!formData.businessCategory) {
+            newErrors.businessCategory = "Business Category is required";
+            isValid = false;
+        }
         setErrors(newErrors);
         return isValid;
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        
         if (validate()) {
             console.log("Form Data Submitted:", formData);
-            // Add your form submission logic here
+            
+            // Save form data as JSON and download it
+            const jsonData = JSON.stringify(formData, null, 2); // Pretty-print JSON
+            const blob = new Blob([jsonData], { type: "application/json" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "business_registration.json";
+            link.click();
         }
     };
 
@@ -111,7 +130,7 @@ const BusinessSignUp = () => {
                             helperText={errors.businessName}
                         />
                     </Grid>
-                    
+
                     <Grid item xs={12}>
                         <TextField
                             fullWidth
@@ -129,13 +148,22 @@ const BusinessSignUp = () => {
                             label="Mobile Number"
                             name="mobileNumber"
                             value={formData.mobileNumber}
-                            onChange={handleChange}
+                            onChange={(e) => {
+                                const numericValue = e.target.value.replace(/[^0-9]/g, "");
+                                handleChange({
+                                    target: {
+                                        name: e.target.name!,
+                                        value: numericValue,
+                                    },
+                                });
+                            }}
                             error={!!errors.mobileNumber}
                             helperText={errors.mobileNumber}
                             inputProps={{
-                                maxLength: 10, // Restrict input to 10 characters
-                                inputMode: "numeric", // Show numeric keyboard on mobile devices
-                                pattern: "[0-9]*", // Allow only numeric input
+                                maxLength: 10,
+                                inputMode: "numeric",
+                                pattern: "[0-9]{10}",
+                                title: "Please enter a 10-digit phone number",
                             }}
                         />
                     </Grid>
@@ -162,25 +190,27 @@ const BusinessSignUp = () => {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <Button
-                            variant="contained"
-                            component="label"
-                            fullWidth
-                            color={errors.logo ? "error" : "primary"}
-                        >
-                            Upload Business Logo
-                            <input
-                                type="file"
-                                hidden
-                                accept="image/*"
-                                onChange={handleFileChange}
-                            />
-                        </Button>
-                        {errors.logo && (
-                            <Typography color="error" variant="body2">
-                                {errors.logo}
-                            </Typography>
-                        )}
+                        <FormControl fullWidth error={!!errors.businessCategory}>
+                            <InputLabel>Business Category</InputLabel>
+                            <Select
+                                name="businessCategory"
+                                value={formData.businessCategory}
+                                onChange={handleChange}
+                            >
+                                <MenuItem value="Catering">Catering</MenuItem>
+                                <MenuItem value="Photography">Photography</MenuItem>
+                                <MenuItem value="Venues">Venues</MenuItem>
+                                <MenuItem value="Anchors">Anchors</MenuItem>
+                                <MenuItem value="Singers">Singers</MenuItem>
+                                <MenuItem value="Magicians">Magicians</MenuItem>
+                                <MenuItem value="Dancers">Dancers</MenuItem>
+                            </Select>
+                            {errors.businessCategory && (
+                                <Typography color="error" variant="body2">
+                                    {errors.businessCategory}
+                                </Typography>
+                            )}
+                        </FormControl>
                     </Grid>
                     <Grid item xs={12}>
                         <Button type="submit" variant="contained" color="primary" fullWidth>
